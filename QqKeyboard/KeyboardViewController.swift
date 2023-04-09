@@ -139,6 +139,7 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         self.setColorScheme()
+        let text = textInput?.text
     }
     
     func addRowsOnKeyboard(kbKeys: [String], spacing: CGFloat = 5, isAdditional: Bool = false) -> UIView {
