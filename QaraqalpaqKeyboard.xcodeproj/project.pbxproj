@@ -7,23 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8795F0D299547E700F9CF57 /* Themes+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8795F0C299547E700F9CF57 /* Themes+Colors.swift */; };
+		B8795F0E2995482B00F9CF57 /* Themes+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8795F0C299547E700F9CF57 /* Themes+Colors.swift */; };
+		B89539E2298C975000974D82 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89539E0298C932700974D82 /* Extensions.swift */; };
+		B89539E5298C97F100974D82 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89539E4298C97F100974D82 /* KeyboardButton.swift */; };
+		B89539E6298C981300974D82 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89539E4298C97F100974D82 /* KeyboardButton.swift */; };
 		B8A85D772985D457003D3181 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85D762985D457003D3181 /* AppDelegate.swift */; };
 		B8A85D792985D457003D3181 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85D782985D457003D3181 /* SceneDelegate.swift */; };
 		B8A85D7B2985D457003D3181 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85D7A2985D457003D3181 /* ViewController.swift */; };
-		B8A85D7E2985D457003D3181 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7C2985D457003D3181 /* Main.storyboard */; };
 		B8A85D802985D458003D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7F2985D458003D3181 /* Assets.xcassets */; };
 		B8A85D832985D458003D3181 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D812985D458003D3181 /* LaunchScreen.storyboard */; };
+		B8A85D912985D5F4003D3181 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85D902985D5F4003D3181 /* KeyboardViewController.swift */; };
+		B8A85D952985D5F4003D3181 /* QqKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8A85D9A2985DBE6003D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7F2985D458003D3181 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B8A85D932985D5F4003D3181 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8A85D6B2985D457003D3181 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8A85D8D2985D5F4003D3181;
+			remoteInfo = QqKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8A85D992985D5F4003D3181 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8A85D952985D5F4003D3181 /* QqKeyboard.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B8795F0C299547E700F9CF57 /* Themes+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Themes+Colors.swift"; sourceTree = "<group>"; };
+		B89539E0298C932700974D82 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B89539E4298C97F100974D82 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		B8A85D732985D457003D3181 /* QaraqalpaqKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QaraqalpaqKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A85D762985D457003D3181 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8A85D782985D457003D3181 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B8A85D7A2985D457003D3181 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B8A85D7D2985D457003D3181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8A85D7F2985D458003D3181 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8A85D822985D458003D3181 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8A85D842985D458003D3181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QqKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8A85D902985D5F4003D3181 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		B8A85D922985D5F4003D3181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QaraqalpaqKeyboard.entitlements; sourceTree = "<group>"; };
+		B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QqKeyboard.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,13 +72,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8A85D8B2985D5F4003D3181 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B89539E3298C97DD00974D82 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B89539E4298C97F100974D82 /* KeyboardButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B8A85D6A2985D456003D3181 = {
 			isa = PBXGroup;
 			children = (
 				B8A85D752985D457003D3181 /* QaraqalpaqKeyboard */,
+				B8A85D8F2985D5F4003D3181 /* QqKeyboard */,
 				B8A85D742985D457003D3181 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B8A85D732985D457003D3181 /* QaraqalpaqKeyboard.app */,
+				B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,15 +111,28 @@
 		B8A85D752985D457003D3181 /* QaraqalpaqKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B89539E3298C97DD00974D82 /* View */,
+				B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */,
 				B8A85D762985D457003D3181 /* AppDelegate.swift */,
 				B8A85D782985D457003D3181 /* SceneDelegate.swift */,
 				B8A85D7A2985D457003D3181 /* ViewController.swift */,
-				B8A85D7C2985D457003D3181 /* Main.storyboard */,
 				B8A85D7F2985D458003D3181 /* Assets.xcassets */,
 				B8A85D812985D458003D3181 /* LaunchScreen.storyboard */,
 				B8A85D842985D458003D3181 /* Info.plist */,
+				B8795F0C299547E700F9CF57 /* Themes+Colors.swift */,
 			);
 			path = QaraqalpaqKeyboard;
+			sourceTree = "<group>";
+		};
+		B8A85D8F2985D5F4003D3181 /* QqKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */,
+				B8A85D902985D5F4003D3181 /* KeyboardViewController.swift */,
+				B89539E0298C932700974D82 /* Extensions.swift */,
+				B8A85D922985D5F4003D3181 /* Info.plist */,
+			);
+			path = QqKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,15 +145,34 @@
 				B8A85D6F2985D457003D3181 /* Sources */,
 				B8A85D702985D457003D3181 /* Frameworks */,
 				B8A85D712985D457003D3181 /* Resources */,
+				B8A85D992985D5F4003D3181 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B8A85D942985D5F4003D3181 /* PBXTargetDependency */,
 			);
 			name = QaraqalpaqKeyboard;
 			productName = QaraqalpaqKeyboard;
 			productReference = B8A85D732985D457003D3181 /* QaraqalpaqKeyboard.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B8A85D8D2985D5F4003D3181 /* QqKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8A85D962985D5F4003D3181 /* Build configuration list for PBXNativeTarget "QqKeyboard" */;
+			buildPhases = (
+				B8A85D8A2985D5F4003D3181 /* Sources */,
+				B8A85D8B2985D5F4003D3181 /* Frameworks */,
+				B8A85D8C2985D5F4003D3181 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QqKeyboard;
+			productName = QqKeyboard;
+			productReference = B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +185,9 @@
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					B8A85D722985D457003D3181 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					B8A85D8D2985D5F4003D3181 = {
 						CreatedOnToolsVersion = 14.1;
 					};
 				};
@@ -116,6 +206,7 @@
 			projectRoot = "";
 			targets = (
 				B8A85D722985D457003D3181 /* QaraqalpaqKeyboard */,
+				B8A85D8D2985D5F4003D3181 /* QqKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +218,14 @@
 			files = (
 				B8A85D832985D458003D3181 /* LaunchScreen.storyboard in Resources */,
 				B8A85D802985D458003D3181 /* Assets.xcassets in Resources */,
-				B8A85D7E2985D457003D3181 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A85D8C2985D5F4003D3181 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8A85D9A2985DBE6003D3181 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +236,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B89539E5298C97F100974D82 /* KeyboardButton.swift in Sources */,
 				B8A85D7B2985D457003D3181 /* ViewController.swift in Sources */,
 				B8A85D772985D457003D3181 /* AppDelegate.swift in Sources */,
+				B8795F0D299547E700F9CF57 /* Themes+Colors.swift in Sources */,
 				B8A85D792985D457003D3181 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A85D8A2985D5F4003D3181 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B89539E6298C981300974D82 /* KeyboardButton.swift in Sources */,
+				B8795F0E2995482B00F9CF57 /* Themes+Colors.swift in Sources */,
+				B8A85D912985D5F4003D3181 /* KeyboardViewController.swift in Sources */,
+				B89539E2298C975000974D82 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		B8A85D7C2985D457003D3181 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8A85D7D2985D457003D3181 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		B8A85D942985D5F4003D3181 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8A85D8D2985D5F4003D3181 /* QqKeyboard */;
+			targetProxy = B8A85D932985D5F4003D3181 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		B8A85D812985D458003D3181 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -283,8 +394,10 @@
 		B8A85D882985D458003D3181 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QaraqalpaqKeyboard/QaraqalpaqKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
@@ -292,7 +405,7 @@
 				INFOPLIST_FILE = QaraqalpaqKeyboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,8 +424,10 @@
 		B8A85D892985D458003D3181 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = QaraqalpaqKeyboard/QaraqalpaqKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
@@ -320,7 +435,7 @@
 				INFOPLIST_FILE = QaraqalpaqKeyboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,6 +445,58 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TexnoPos.QaraqalpaqKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B8A85D972985D5F4003D3181 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QqKeyboard/QqKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B9QUW9Z84N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QqKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QqKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TexnoPos.QaraqalpaqKeyboard.QqKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8A85D982985D5F4003D3181 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = QqKeyboard/QqKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B9QUW9Z84N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QqKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = QqKeyboard;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = TexnoPos.QaraqalpaqKeyboard.QqKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,6 +520,15 @@
 			buildConfigurations = (
 				B8A85D882985D458003D3181 /* Debug */,
 				B8A85D892985D458003D3181 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8A85D962985D5F4003D3181 /* Build configuration list for PBXNativeTarget "QqKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8A85D972985D5F4003D3181 /* Debug */,
+				B8A85D982985D5F4003D3181 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
