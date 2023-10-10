@@ -7,32 +7,32 @@
 
 import UIKit
 
-enum UppercaseStates {
+fileprivate enum UppercaseStates {
     case up
     case low
     case alwaysUp
 }
 
-class KeyboardViewController: UIInputViewController {
+final class KeyboardViewController: UIInputViewController {
     
-    var nextKeyboardButton: UIButton!
-    var mainStackView: UIStackView!
-    var allTextButtons = [KeyboardButton]()
+    private var nextKeyboardButton: UIButton!
+    private var mainStackView: UIStackView!
+    private var allTextButtons = [KeyboardButton]()
     
-    var capButton: KeyboardButton!
-    var numericButton: KeyboardButton!
-    var deleteButton: KeyboardButton!
-    var latinCyrillButton: KeyboardButton!
-    var returnButton: KeyboardButton!
-    var spaceButton: KeyboardButton!
+    private var capButton: KeyboardButton!
+    private var numericButton: KeyboardButton!
+    private var deleteButton: KeyboardButton!
+    private var latinCyrillButton: KeyboardButton!
+    private var returnButton: KeyboardButton!
+    private var spaceButton: KeyboardButton!
     
-    var keyboardHeight: CGFloat = 215
-    var themeColors: KBColors! = KBColors(colorScheme: .dark)
+    private var keyboardHeight: CGFloat = 215
+    private var themeColors: KBColors! = KBColors(colorScheme: .dark)
     
-    var backspaceTimer: Timer?
-    var backspaceCounter: Int = 0
+    private var backspaceTimer: Timer?
+    private var backspaceCounter: Int = 0
     
-    var keyboardState = UppercaseStates.up {
+    private var keyboardState = UppercaseStates.up {
         didSet {
             switch keyboardState {
             case .low:
@@ -72,13 +72,13 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    var areCyrillLetters = false {
+    private var areCyrillLetters = false {
         didSet {
             areLettersShowing = true
         }
     }
     
-    var areLettersShowing = true {
+    private var areLettersShowing = true {
         didSet{
             for view in mainStackView.arrangedSubviews {
                 view.removeFromSuperview()
@@ -96,8 +96,6 @@ class KeyboardViewController: UIInputViewController {
         }
         
     }
-    
-    var additionalSymbols = false
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -141,35 +139,6 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(_ textInput: UITextInput?) {
         // The app has just changed the document's contents, the document context has been updated.
         self.setColorScheme()
-    }
-    
-    func addRowsOnKeyboard(kbKeys: [String], spacing: CGFloat = 5, isAdditional: Bool = false) -> UIView {
-        
-        let RowStackView = UIStackView.init()
-        RowStackView.spacing = 0
-        RowStackView.axis = .horizontal
-        RowStackView.alignment = .center
-        RowStackView.distribution = .fillEqually
-        if isAdditional {
-            RowStackView.addArrangedSubview(UIView())
-            for key in kbKeys {
-                let button = createButtonWithTitle(title: key)
-                RowStackView.addArrangedSubview(button)
-            }
-            RowStackView.addArrangedSubview(UIView())
-        }else {
-            for key in kbKeys {
-                let button = createButtonWithTitle(title: key)
-                RowStackView.addArrangedSubview(button)
-            }
-        }
-        
-        let keysView = UIView()
-        keysView.backgroundColor = .clear
-        keysView.addSubview(RowStackView)
-        keysView.addConstraintsWithFormatString(formate: "H:|[v0]|", views: RowStackView)
-        keysView.addConstraintsWithFormatString(formate: "V:|[v0]|", views: RowStackView)
-        return keysView
     }
     
     private func addKeyboardButtons() {
@@ -220,8 +189,62 @@ class KeyboardViewController: UIInputViewController {
             let (thirdRowSV,fourthRowSV) = serviceKeys(midRow: thirdRowkeysView)
             addMainStackView(arrangedSubviews: [additionalRow,firstRowView,secondRowView,thirdRowSV,fourthRowSV])
         }
+    }
+    
+    private func displayNumericKeys(firstPage: Bool = true) {
         
+        for view in mainStackView.arrangedSubviews {
+            view.removeFromSuperview()
+        }
         
+        let additional = ["[","]","{","}","\\","%","^","*","+","="]
+        let nums = ["1","2","3","4","5","6","7","8","9","0"]
+//        let splChars1 = firstPage ? ["-","/",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
+        let splChars1 = firstPage ? ["-","_",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
+        let splChars2 = [".",",","?","!","#", "/"]
+        
+        let additionalRow = self.addRowsOnKeyboard(kbKeys: additional)
+        let numsRow = self.addRowsOnKeyboard(kbKeys: nums)
+        let splChars1Row = self.addRowsOnKeyboard(kbKeys: splChars1)
+        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2)
+        
+        let (thirdRowSV,fourthRowSV) = serviceKeys(midRow: splChars2Row)
+        
+        mainStackView.addArrangedSubview(additionalRow)
+        mainStackView.addArrangedSubview(numsRow)
+        mainStackView.addArrangedSubview(splChars1Row)
+        mainStackView.addArrangedSubview(thirdRowSV)
+        mainStackView.addArrangedSubview(fourthRowSV)
+        
+    }
+    
+    private func addRowsOnKeyboard(kbKeys: [String], spacing: CGFloat = 5, isAdditional: Bool = false) -> UIView {
+        
+        let RowStackView = UIStackView.init()
+        RowStackView.spacing = 0
+        RowStackView.axis = .horizontal
+        RowStackView.alignment = .center
+        RowStackView.distribution = .fillEqually
+        if isAdditional {
+            RowStackView.addArrangedSubview(UIView())
+            for key in kbKeys {
+                let button = createButtonWithTitle(title: key)
+                RowStackView.addArrangedSubview(button)
+            }
+            RowStackView.addArrangedSubview(UIView())
+        }else {
+            for key in kbKeys {
+                let button = createButtonWithTitle(title: key)
+                RowStackView.addArrangedSubview(button)
+            }
+        }
+        
+        let keysView = UIView()
+        keysView.backgroundColor = .clear
+        keysView.addSubview(RowStackView)
+        keysView.addConstraintsWithFormatString(formate: "H:|[v0]|", views: RowStackView)
+        keysView.addConstraintsWithFormatString(formate: "V:|[v0]|", views: RowStackView)
+        return keysView
     }
     
     private func addMainStackView(arrangedSubviews: [UIView]) {
@@ -242,7 +265,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     // Creates Buttons on Keyboard...
-    func createButtonWithTitle(title: String) -> UIButton {
+    private func createButtonWithTitle(title: String) -> UIButton {
         let button = KeyboardButton(type: .system)
         button.setTitle(title, for: .normal)
         button.sizeToFit()
@@ -262,7 +285,7 @@ class KeyboardViewController: UIInputViewController {
         return bgButton
     }
     
-    func accessoryButtons(title: String?, img: UIImage?, tag: Int) -> KeyboardButton {
+    private func accessoryButtons(title: String?, img: UIImage?, tag: Int) -> KeyboardButton {
         
         let button = KeyboardButton.init(type: .system)
         button.setTitleColor(themeColors.buttonTextColor, for: .normal)
@@ -347,34 +370,7 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    func displayNumericKeys(firstPage: Bool = true) {
-        
-        for view in mainStackView.arrangedSubviews {
-            view.removeFromSuperview()
-        }
-        
-        let additional = ["[","]","{","}","\\","%","^","*","+","="]
-        let nums = ["1","2","3","4","5","6","7","8","9","0"]
-//        let splChars1 = firstPage ? ["-","/",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
-        let splChars1 = firstPage ? ["-","_",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
-        let splChars2 = [".",",","?","!","#", "/"]
-        
-        let additionalRow = self.addRowsOnKeyboard(kbKeys: additional)
-        let numsRow = self.addRowsOnKeyboard(kbKeys: nums)
-        let splChars1Row = self.addRowsOnKeyboard(kbKeys: splChars1)
-        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2)
-        
-        let (thirdRowSV,fourthRowSV) = serviceKeys(midRow: splChars2Row)
-        
-        mainStackView.addArrangedSubview(additionalRow)
-        mainStackView.addArrangedSubview(numsRow)
-        mainStackView.addArrangedSubview(splChars1Row)
-        mainStackView.addArrangedSubview(thirdRowSV)
-        mainStackView.addArrangedSubview(fourthRowSV)
-        
-    }
-    
-    func serviceKeys(midRow: UIView) -> (UIStackView, UIStackView) {
+    private func serviceKeys(midRow: UIView) -> (UIStackView, UIStackView) {
 //        if areLettersShowing {
             if keyboardState == .low {
                 self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial1"), tag: 1)
@@ -430,7 +426,7 @@ class KeyboardViewController: UIInputViewController {
         return (thirdRowSV,fourthRowSV)
     }
     
-    func setColorScheme() {
+    private func setColorScheme() {
         if self.traitCollection.userInterfaceStyle == .dark {
             themeColors = KBColors(colorScheme: .dark)
         } else {
@@ -471,10 +467,8 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
-    
-    
     //MARK: - Actions
-    @objc func didTapButton(sender: UIButton) {
+    @objc private func didTapButton(sender: UIButton) {
         
         let button = sender as UIButton
         //        self.manageShadowsOnKeys(button: button, isShadowsNeeded: false)
@@ -497,29 +491,15 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    @objc func handleCapitalsAndLowerCase(sender: UIButton) {
+    @objc private func handleCapitalsAndLowerCase(sender: UIButton) {
         keyboardState = keyboardState == .low ? .up : .low
     }
     
-    @objc func handleDoubleTapOnCapitalButton() {
+    @objc private func handleDoubleTapOnCapitalButton() {
         keyboardState = .alwaysUp
     }
     
-//    func capitalFunction() {
-//        for button in allTextButtons {
-//            if let title = button.currentTitle {
-//                if title == "Í" && keyboardState == .low {
-//                    button.setTitle("ı", for: .normal)
-//                }else if title == "ı" && (keyboardState == .up || keyboardState == .alwaysUp) {
-//                    button.setTitle("Í", for: .normal)
-//                }else {
-//                    button.setTitle(keyboardState == .low ? title.lowercased() : title.uppercased(), for: .normal)
-//                }
-//            }
-//        }
-//    }
-    
-    @objc func handleBackDeleteSingleTap() {
+    @objc private func handleBackDeleteSingleTap() {
         self.textDocumentProxy.deleteBackward()
         if self.shouldMakeUppercasedKeyboard().makeUpper {
             keyboardState = .up
@@ -528,7 +508,7 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    @objc func onLongPressOfBackSpaceKey(longGestr: UILongPressGestureRecognizer) {
+    @objc private func onLongPressOfBackSpaceKey(longGestr: UILongPressGestureRecognizer) {
         switch longGestr.state {
             case .began:
             backspaceCounter = 0 // Reset the backspace counter
@@ -542,11 +522,11 @@ class KeyboardViewController: UIInputViewController {
             }
     }
     
-    @objc func handleLatinCyrillButton() {
+    @objc private func handleLatinCyrillButton() {
         self.areCyrillLetters = !areCyrillLetters
     }
     
-    @objc func insertWhiteSpace() {
+    @objc private func insertWhiteSpace() {
         let proxy = self.textDocumentProxy
         proxy.insertText(" ")
         if shouldMakeUppercasedKeyboard() == (true, true) {
@@ -558,18 +538,18 @@ class KeyboardViewController: UIInputViewController {
         }
     }
     
-    @objc func handleReturnKey(sender: UIButton) {
+    @objc private func handleReturnKey(sender: UIButton) {
         //        if let _ = self.textDocumentProxy.documentContextBeforeInput {
         self.textDocumentProxy.insertText("\n")
         //        }
         keyboardState = .up
     }
     
-    @objc func handleSwitchingNumericsAndLetters(sender: UIButton) {
+    @objc private func handleSwitchingNumericsAndLetters(sender: UIButton) {
         areLettersShowing = !areLettersShowing
     }
     
-    @objc func handleAdditionalSymbolicKey() {
+    @objc private func handleAdditionalSymbolicKey() {
 //        additionalSymbols = !additionalSymbols
 //        displayNumericKeys(firstPage: additionalSymbols)
 //        if additionalSymbols {
@@ -577,10 +557,9 @@ class KeyboardViewController: UIInputViewController {
 //        }else {
 //            self.capButton.setTitle("-/", for: .normal)
 //        }
-        
     }
     
-    @objc func backspaceTimerFired() {
+    @objc private func backspaceTimerFired() {
         let proxy = textDocumentProxy as UITextDocumentProxy
         if backspaceCounter < 25 { // Delete letters for first 5 presses
             proxy.deleteBackward()
@@ -598,8 +577,20 @@ class KeyboardViewController: UIInputViewController {
         }
         backspaceCounter += 1
     }
+}
+
+
+//MARK: - Helper methods
+extension KeyboardViewController {
+    private func createBackgroundButton(subView: UIView) -> UIButton {
+        let button = UIButton()
+        subView.translatesAutoresizingMaskIntoConstraints = false
+        button.addSubview(subView)
+        subView.fullConstraint(top: 4, bottom: -4, leading: 2, trailing: -2)
+        return button
+    }
     
-    func shouldMakeUppercasedKeyboard() -> (makeUpper: Bool, addDot: Bool) {
+    private func shouldMakeUppercasedKeyboard() -> (makeUpper: Bool, addDot: Bool) {
         guard let text = getTextFromCurrentInput() else {return (makeUpper: false, addDot: false)}
         
         if text.isEmpty {
@@ -637,17 +628,5 @@ class KeyboardViewController: UIInputViewController {
         let documentContextAfterInput = textDocumentProxy.documentContextAfterInput ?? ""
         
         return documentContextBeforeInput + documentContextAfterInput
-    }
-}
-
-
-//MARK: Helper methods
-extension KeyboardViewController {
-    private func createBackgroundButton(subView: UIView) -> UIButton {
-        let button = UIButton()
-        subView.translatesAutoresizingMaskIntoConstraints = false
-        button.addSubview(subView)
-        subView.fullConstraint(top: 4, bottom: -4, leading: 2, trailing: -2)
-        return button
     }
 }
