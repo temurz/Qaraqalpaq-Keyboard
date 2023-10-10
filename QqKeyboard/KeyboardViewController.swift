@@ -523,6 +523,8 @@ class KeyboardViewController: UIInputViewController {
         self.textDocumentProxy.deleteBackward()
         if self.shouldMakeUppercasedKeyboard().makeUpper {
             keyboardState = .up
+        }else if keyboardState != .alwaysUp {
+            keyboardState = .low
         }
     }
     
