@@ -516,7 +516,7 @@ final class KeyboardViewController: UIInputViewController {
         
         keyboardState = keyboardState == .up ? .low : keyboardState
         
-        if shouldMakeUppercasedKeyboard().makeUpper {
+        if title == "." || title == "?" || title == "!" {
             if keyboardState != .alwaysUp {
                 keyboardState = .up
             }
@@ -541,13 +541,13 @@ final class KeyboardViewController: UIInputViewController {
     
     @objc private func handleBackDeleteSingleTap() {
         self.textDocumentProxy.deleteBackward()
-        if self.shouldMakeUppercasedKeyboard().makeUpper {
-            if keyboardState != .alwaysUp {
-                keyboardState = .up
-            }
-        }else if keyboardState != .alwaysUp {
-            keyboardState = .low
-        }
+//        if self.shouldMakeUppercasedKeyboard().makeUpper {
+//            if keyboardState != .alwaysUp {
+//                keyboardState = .up
+//            }
+//        }else if keyboardState != .alwaysUp {
+//            keyboardState = .low
+//        }
     }
     
     @objc private func onLongPressOfBackSpaceKey(longGestr: UILongPressGestureRecognizer) {

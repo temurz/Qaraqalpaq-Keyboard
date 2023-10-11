@@ -21,6 +21,10 @@
 		B8A85D952985D5F4003D3181 /* QqKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8A85D9A2985DBE6003D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7F2985D458003D3181 /* Assets.xcassets */; };
 		B8D9FEA02AD6B9AE0002BC57 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */; };
+		B8F1D2682AD6F55D00C2F175 /* InstructionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D2672AD6F55D00C2F175 /* InstructionsController.swift */; };
+		B8F1D26A2AD6F58000C2F175 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D2692AD6F58000C2F175 /* ContactsController.swift */; };
+		B8F1D26C2AD6FA2C00C2F175 /* InstructionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D26B2AD6FA2C00C2F175 /* InstructionCell.swift */; };
+		B8F1D26E2AD715BF00C2F175 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D26D2AD715BF00C2F175 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QaraqalpaqKeyboard.entitlements; sourceTree = "<group>"; };
 		B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QqKeyboard.entitlements; sourceTree = "<group>"; };
 		B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		B8F1D2672AD6F55D00C2F175 /* InstructionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsController.swift; sourceTree = "<group>"; };
+		B8F1D2692AD6F58000C2F175 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
+		B8F1D26B2AD6FA2C00C2F175 /* InstructionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionCell.swift; sourceTree = "<group>"; };
+		B8F1D26D2AD715BF00C2F175 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,8 @@
 			children = (
 				B89539E4298C97F100974D82 /* KeyboardButton.swift */,
 				B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */,
+				B8F1D26B2AD6FA2C00C2F175 /* InstructionCell.swift */,
+				B8F1D26D2AD715BF00C2F175 /* String+Extension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				B8A85D7A2985D457003D3181 /* ViewController.swift */,
+				B8F1D2672AD6F55D00C2F175 /* InstructionsController.swift */,
+				B8F1D2692AD6F58000C2F175 /* ContactsController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,9 +261,13 @@
 			files = (
 				B89539E5298C97F100974D82 /* KeyboardButton.swift in Sources */,
 				B8A85D7B2985D457003D3181 /* ViewController.swift in Sources */,
+				B8F1D26C2AD6FA2C00C2F175 /* InstructionCell.swift in Sources */,
 				B8D9FEA02AD6B9AE0002BC57 /* MenuCell.swift in Sources */,
 				B8A85D772985D457003D3181 /* AppDelegate.swift in Sources */,
 				B8795F0D299547E700F9CF57 /* Themes+Colors.swift in Sources */,
+				B8F1D2682AD6F55D00C2F175 /* InstructionsController.swift in Sources */,
+				B8F1D26A2AD6F58000C2F175 /* ContactsController.swift in Sources */,
+				B8F1D26E2AD715BF00C2F175 /* String+Extension.swift in Sources */,
 				B8A85D792985D457003D3181 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -393,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -415,6 +431,8 @@
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QaraqalpaqKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KarKey;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -445,6 +463,8 @@
 				DEVELOPMENT_TEAM = B9QUW9Z84N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QaraqalpaqKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KarKey;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

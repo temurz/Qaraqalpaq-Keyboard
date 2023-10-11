@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import StoreKit
 class ViewController: UIViewController {
     private let tableView = UITableView()
 //    private let textField = UITextField()
@@ -30,8 +30,6 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isScrollEnabled = false
-//        tableView.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-//        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         self.view.addSubview(tableView)
         
@@ -45,7 +43,7 @@ class ViewController: UIViewController {
 //            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
 //            textField.heightAnchor.constraint(equalToConstant: 50),
             
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -78,5 +76,37 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let vc = InstructionsController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = ContactsController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            //Support project
+            let alert = UIAlertController(title: "Қоллап қуўатлаў", message: "", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "Артқа", style: .cancel)
+            
+            
+            let donate = UIAlertAction(title: "Донат жибериў", style: .default)
+            let rate = UIAlertAction(title: "Баҳа бериў", style: .default) { _ in
+                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                    DispatchQueue.main.async {
+                        SKStoreReviewController.requestReview(in: scene)
+                    }
+                }
+            }
+            
+            alert.addAction(donate)
+            alert.addAction(rate)
+            alert.addAction(cancel)
+            self.present(alert, animated: true)
+        default:
+            break
+        }
     }
 }
