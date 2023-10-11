@@ -32,6 +32,8 @@ final class KeyboardViewController: UIInputViewController {
     private var backspaceTimer: Timer?
     private var backspaceCounter: Int = 0
     
+    private var firstTapTime: Date?
+    
     private var keyboardState = UppercaseStates.up {
         didSet {
             switch keyboardState {
@@ -309,14 +311,8 @@ final class KeyboardViewController: UIInputViewController {
         switch button.tag {
         case 1:
             //For Capitals...
-//            let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapOnCapitalButton))
-//            doubleTapGesture.numberOfTapsRequired = 2
-//            button.addGestureRecognizer(doubleTapGesture)
-            
-            // Add single tap gesture recognizer to button
             let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCapitalsAndLowerCase))
             singleTapGesture.numberOfTapsRequired = 1
-//            singleTapGesture.require(toFail: doubleTapGesture)
             button.addGestureRecognizer(singleTapGesture)
             
             button.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -492,11 +488,19 @@ final class KeyboardViewController: UIInputViewController {
     }
     
     @objc private func handleCapitalsAndLowerCase(sender: UIButton) {
-        keyboardState = keyboardState == .low ? .up : .low
-    }
-    
-    @objc private func handleDoubleTapOnCapitalButton() {
-        keyboardState = .alwaysUp
+        if let firstTapTime = firstTapTime {
+            let timeDifference = Date().timeIntervalSince(firstTapTime)
+            if timeDifference < 0.3 {
+                keyboardState = .alwaysUp
+            }else {
+                self.firstTapTime = Date()
+                keyboardState = keyboardState == .low ? .up : .low
+            }
+        }else {
+            firstTapTime = Date()
+            keyboardState = keyboardState == .low ? .up : .low
+        }
+        
     }
     
     @objc private func handleBackDeleteSingleTap() {
