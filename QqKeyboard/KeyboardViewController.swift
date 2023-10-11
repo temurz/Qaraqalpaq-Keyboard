@@ -25,6 +25,8 @@ final class KeyboardViewController: UIInputViewController {
     private var latinCyrillButton: KeyboardButton!
     private var returnButton: KeyboardButton!
     private var spaceButton: KeyboardButton!
+    private var dotButton: KeyboardButton!
+    private var commaButton: KeyboardButton!
     
     private var keyboardHeight: CGFloat = 215
     private var themeColors: KBColors! = KBColors(colorScheme: .dark)
@@ -126,7 +128,7 @@ final class KeyboardViewController: UIInputViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        //        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
+//        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -337,14 +339,14 @@ final class KeyboardViewController: UIInputViewController {
         case 4:
             //Next Keyboard Button... Globe Button Usually...
             button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-            button.widthAnchor.constraint(equalToConstant: 45).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
             
             return button
         case 5:
             //Handle Latin or Cyrill Karakalpak alphabet
             
             button.addTarget(self, action: #selector(handleLatinCyrillButton), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 45).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
             return button
         case 6:
             //White Space Button...
@@ -359,6 +361,14 @@ final class KeyboardViewController: UIInputViewController {
         case 8:
             //additional symbols
             button.addTarget(self, action: #selector(handleAdditionalSymbolicKey), for: .touchUpInside)
+            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            return button
+        case 9:
+            button.addTarget(self, action: #selector(handleDotButton), for: .touchUpInside)
+            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            return button
+        case 10:
+            button.addTarget(self, action: #selector(handleCommaButton), for: .touchUpInside)
             button.widthAnchor.constraint(equalToConstant: 30).isActive = true
             return button
         default:
@@ -404,22 +414,39 @@ final class KeyboardViewController: UIInputViewController {
         }
         
         self.nextKeyboardButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "globe"), tag: 4)
-        let (numbericBgButton, nextBgButton, spaceBgButton, latinCyrBgButton, returnBgButton) = (createBackgroundButton(subView: numericButton), createBackgroundButton(subView: nextKeyboardButton),
+        self.dotButton = accessoryButtons(title: ".", img: nil, tag: 9)
+        self.commaButton = accessoryButtons(title: ",", img: nil, tag: 10)
+        
+        let (numbericBgButton, nextBgButton, dotBgButton, spaceBgButton, latinCyrBgButton, commaBgButton, returnBgButton) = (
+            createBackgroundButton(subView: numericButton),
+            createBackgroundButton(subView: nextKeyboardButton),
+            createBackgroundButton(subView: dotButton),
             createBackgroundButton(subView: spaceButton),
             createBackgroundButton(subView: latinCyrillButton),
+            createBackgroundButton(subView: commaButton),
             createBackgroundButton(subView: returnButton))
         
         numbericBgButton.addTarget(self, action: #selector(handleSwitchingNumericsAndLetters), for: .touchUpInside)
         nextBgButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .touchUpInside)
         spaceBgButton.addTarget(self, action: #selector(insertWhiteSpace), for: .touchUpInside)
         latinCyrBgButton.addTarget(self, action: #selector(handleLatinCyrillButton), for: .touchUpInside)
+        dotBgButton.addTarget(self, action: #selector(handleDotButton), for: .touchUpInside)
+        commaBgButton.addTarget(self, action: #selector(handleCommaButton), for: .touchUpInside)
         returnBgButton.addTarget(self, action: #selector(handleReturnKey), for: .touchUpInside)
         
-        let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, nextBgButton, spaceBgButton, latinCyrBgButton, returnBgButton])
-        fourthRowSV.distribution = .fillProportionally
-        fourthRowSV.spacing = 0
-        
-        return (thirdRowSV,fourthRowSV)
+//        if nextKeyboardButton.isHidden {
+//            let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, dotBgButton, spaceBgButton, commaBgButton, latinCyrBgButton, returnBgButton])
+//            fourthRowSV.distribution = .fillProportionally
+//            fourthRowSV.spacing = 0
+//            
+//            return (thirdRowSV,fourthRowSV)
+//        }else {
+            let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, nextBgButton, spaceBgButton, latinCyrBgButton, returnBgButton])
+            fourthRowSV.distribution = .fillProportionally
+            fourthRowSV.spacing = 0
+            
+            return (thirdRowSV,fourthRowSV)
+//        }
     }
     
     private func setColorScheme() {
@@ -438,6 +465,10 @@ final class KeyboardViewController: UIInputViewController {
         self.returnButton.defaultBackgroundColor = themeColors.serviceButtonBackgroundColor
         (self.nextKeyboardButton as? KeyboardButton)?.defaultBackgroundColor = themeColors.serviceButtonBackgroundColor
         (self.nextKeyboardButton as? KeyboardButton)?.tintColor = themeColors.buttonTintColor
+        self.dotButton.defaultBackgroundColor = themeColors.buttonBackgroundColor
+        self.dotButton.setTitleColor(themeColors.buttonTextColor, for: .normal)
+        self.commaButton.defaultBackgroundColor = themeColors.buttonBackgroundColor
+        self.commaButton.setTitleColor(themeColors.buttonTextColor, for: .normal)
         self.spaceButton.defaultBackgroundColor = themeColors.buttonBackgroundColor
         
         self.capButton.highlightBackgroundColor = themeColors.buttonHighlightColor
@@ -447,6 +478,9 @@ final class KeyboardViewController: UIInputViewController {
         self.latinCyrillButton.highlightBackgroundColor = themeColors.buttonBackgroundColor
         (self.nextKeyboardButton as? KeyboardButton)?.highlightBackgroundColor = themeColors.buttonBackgroundColor
         self.spaceButton.highlightBackgroundColor = themeColors.buttonHighlightColor
+        self.dotButton.highlightBackgroundColor = themeColors.buttonHighlightColor
+        self.commaButton.highlightBackgroundColor = themeColors.buttonHighlightColor
+        
         
         self.numericButton.setTitleColor(themeColors.buttonTextColor, for: .normal)
         self.spaceButton.setTitleColor(themeColors.buttonTextColor, for: .normal)
@@ -483,7 +517,9 @@ final class KeyboardViewController: UIInputViewController {
         keyboardState = keyboardState == .up ? .low : keyboardState
         
         if shouldMakeUppercasedKeyboard().makeUpper {
-            keyboardState = .up
+            if keyboardState != .alwaysUp {
+                keyboardState = .up
+            }
         }
     }
     
@@ -506,7 +542,9 @@ final class KeyboardViewController: UIInputViewController {
     @objc private func handleBackDeleteSingleTap() {
         self.textDocumentProxy.deleteBackward()
         if self.shouldMakeUppercasedKeyboard().makeUpper {
-            keyboardState = .up
+            if keyboardState != .alwaysUp {
+                keyboardState = .up
+            }
         }else if keyboardState != .alwaysUp {
             keyboardState = .low
         }
@@ -534,7 +572,9 @@ final class KeyboardViewController: UIInputViewController {
         let proxy = self.textDocumentProxy
         proxy.insertText(" ")
         if shouldMakeUppercasedKeyboard() == (true, true) {
-            keyboardState = .up
+            if keyboardState != .alwaysUp {
+                keyboardState = .up
+            }
             proxy.deleteBackward()
             proxy.deleteBackward()
             proxy.insertText(".")
@@ -546,7 +586,9 @@ final class KeyboardViewController: UIInputViewController {
         //        if let _ = self.textDocumentProxy.documentContextBeforeInput {
         self.textDocumentProxy.insertText("\n")
         //        }
-        keyboardState = .up
+        if keyboardState != .alwaysUp {
+            keyboardState = .up
+        }
     }
     
     @objc private func handleSwitchingNumericsAndLetters(sender: UIButton) {
@@ -561,6 +603,17 @@ final class KeyboardViewController: UIInputViewController {
 //        }else {
 //            self.capButton.setTitle("-/", for: .normal)
 //        }
+    }
+    
+    @objc private func handleDotButton() {
+        textDocumentProxy.insertText(".")
+        if keyboardState != .alwaysUp {
+            keyboardState = .up
+        }
+    }
+    
+    @objc private func handleCommaButton() {
+        textDocumentProxy.insertText(",")
     }
     
     @objc private func backspaceTimerFired() {
@@ -602,7 +655,6 @@ extension KeyboardViewController {
         }
         var lastNonSpaceCharacter: Character?
         var foundSpaces = 0
-        var counter = 0
         for character in text.reversed() {
             if character == " " {
                 foundSpaces += 1

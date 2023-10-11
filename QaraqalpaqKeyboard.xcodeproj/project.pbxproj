@@ -20,6 +20,7 @@
 		B8A85D912985D5F4003D3181 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A85D902985D5F4003D3181 /* KeyboardViewController.swift */; };
 		B8A85D952985D5F4003D3181 /* QqKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8A85D9A2985DBE6003D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7F2985D458003D3181 /* Assets.xcassets */; };
+		B8D9FEA02AD6B9AE0002BC57 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		B8A85D922985D5F4003D3181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QaraqalpaqKeyboard.entitlements; sourceTree = "<group>"; };
 		B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QqKeyboard.entitlements; sourceTree = "<group>"; };
+		B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				B89539E4298C97F100974D82 /* KeyboardButton.swift */,
+				B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,11 +114,11 @@
 		B8A85D752985D457003D3181 /* QaraqalpaqKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B8D9FEA12AD6E3DD0002BC57 /* Controllers */,
 				B89539E3298C97DD00974D82 /* View */,
 				B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */,
 				B8A85D762985D457003D3181 /* AppDelegate.swift */,
 				B8A85D782985D457003D3181 /* SceneDelegate.swift */,
-				B8A85D7A2985D457003D3181 /* ViewController.swift */,
 				B8A85D7F2985D458003D3181 /* Assets.xcassets */,
 				B8A85D812985D458003D3181 /* LaunchScreen.storyboard */,
 				B8A85D842985D458003D3181 /* Info.plist */,
@@ -133,6 +136,14 @@
 				B8A85D922985D5F4003D3181 /* Info.plist */,
 			);
 			path = QqKeyboard;
+			sourceTree = "<group>";
+		};
+		B8D9FEA12AD6E3DD0002BC57 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8A85D7A2985D457003D3181 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 			files = (
 				B89539E5298C97F100974D82 /* KeyboardButton.swift in Sources */,
 				B8A85D7B2985D457003D3181 /* ViewController.swift in Sources */,
+				B8D9FEA02AD6B9AE0002BC57 /* MenuCell.swift in Sources */,
 				B8A85D772985D457003D3181 /* AppDelegate.swift in Sources */,
 				B8795F0D299547E700F9CF57 /* Themes+Colors.swift in Sources */,
 				B8A85D792985D457003D3181 /* SceneDelegate.swift in Sources */,
