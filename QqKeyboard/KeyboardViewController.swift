@@ -134,6 +134,9 @@ final class KeyboardViewController: UIInputViewController {
         self.addKeyboardButtons()
         self.setColorScheme()
         
+        NSLayoutConstraint.activate([
+            view.heightAnchor.constraint(equalToConstant: keyboardHeight)
+        ])
     }
     
     override func viewWillLayoutSubviews() {
