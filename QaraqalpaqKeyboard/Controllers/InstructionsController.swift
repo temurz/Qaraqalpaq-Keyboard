@@ -11,7 +11,7 @@ class InstructionsController: UIViewController {
     private var items = ["Сазламаларды ашын", "Баслы сазламалар", "Клавиатуралар", "Клавиатура косыу", "\"KarKey\" ды сайлан"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Қолланба"
+        self.title = "Нусқаў"
         initialize()
     }
     

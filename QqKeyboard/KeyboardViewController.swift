@@ -45,6 +45,9 @@ final class KeyboardViewController: UIInputViewController {
                     if let title = button.currentTitle {
                         if title == "Í" {
                             button.setTitle("ı", for: .normal)
+                            if let bg = button.superview as? UIButton {
+                                bg.setTitle("ı", for: .normal)
+                            }
                         }else {
                             button.setTitle(title.lowercased(), for: .normal)
                         }
@@ -56,6 +59,9 @@ final class KeyboardViewController: UIInputViewController {
                     if let title = button.currentTitle {
                         if title == "ı" {
                             button.setTitle("Í", for: .normal)
+                            if let bg = button.superview as? UIButton {
+                                bg.setTitle("Í", for: .normal)
+                            }
                         }else {
                             button.setTitle(title.uppercased(), for: .normal)
                         }
@@ -67,6 +73,9 @@ final class KeyboardViewController: UIInputViewController {
                     if let title = button.currentTitle {
                         if title == "ı" {
                             button.setTitle("Í", for: .normal)
+                            if let bg = button.superview as? UIButton {
+                                bg.setTitle("Í", for: .normal)
+                            }
                         }else {
                             button.setTitle(title.uppercased(), for: .normal)
                         }
@@ -112,6 +121,7 @@ final class KeyboardViewController: UIInputViewController {
         if textDocumentProxy.hasText {
             keyboardState = .low
         }
+        view.backgroundColor = UIColor(named: "key_bg_color")
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
         
@@ -284,6 +294,8 @@ final class KeyboardViewController: UIInputViewController {
         
         let bgButton = createBackgroundButton(subView: button)
         bgButton.setTitle(title, for: .normal)
+        bgButton.isUserInteractionEnabled = true
+        bgButton.backgroundColor = view.backgroundColor
         bgButton.setTitleColor(.clear, for: .normal)
         bgButton.addTarget(self, action: #selector(didTapButton(sender: )), for: .touchUpInside)
         return bgButton

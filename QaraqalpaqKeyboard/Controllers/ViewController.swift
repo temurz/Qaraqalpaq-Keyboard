@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     private let tableView = UITableView()
 //    private let textField = UITextField()
     
-    private var items = [["Қолланба"], ["Байланыс ушын"], ["Жойбарды қоллап қуўатлаў"]]
+    private var items = [["Нусқаў"], ["Байланыс ушын"], ["Жойбарды қоллап қуўатлаў"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +101,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
             
-            alert.addAction(donate)
+//            alert.addAction(donate)
             alert.addAction(rate)
             alert.addAction(cancel)
             self.present(alert, animated: true)
