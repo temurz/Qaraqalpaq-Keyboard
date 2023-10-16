@@ -11,7 +11,7 @@ class InstructionsController: UIViewController {
     private var items = ["Сазламаларды ашын", "Баслы сазламалар", "Клавиатуралар", "Клавиатура косыу", "\"KarKey\" ды сайлан"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Нусқаў"
+        self.title = "Көрсетпе"
         initialize()
     }
     
@@ -46,6 +46,7 @@ extension InstructionsController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! InstructionCell
         cell.updateModel(title: items[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
 }

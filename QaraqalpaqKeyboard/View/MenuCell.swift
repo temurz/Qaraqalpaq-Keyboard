@@ -8,7 +8,9 @@
 import UIKit
 class MenuCell: UITableViewCell {
     private lazy var titleLabel = UILabel()
+    private lazy var iconImageView = UIImageView()
     private lazy var arrowImageView = UIImageView()
+    private lazy var separatorLine = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,6 +34,16 @@ class MenuCell: UITableViewCell {
         arrowImageView.tintColor = .lightGray
         arrowImageView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(arrowImageView)
+        
+        separatorLine.backgroundColor = .systemGray2
+        separatorLine.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(separatorLine)
+        
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        iconImageView.clipsToBounds = true
+        iconImageView.layer.cornerRadius = 4
+        iconImageView.tintColor = .gray
+        self.contentView.addSubview(iconImageView)
         setupConstraints()
     }
     
@@ -43,13 +55,29 @@ class MenuCell: UITableViewCell {
             arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor, multiplier: 1),
             arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            iconImageView.widthAnchor.constraint(equalToConstant: 24),
+            iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor, multiplier: 1),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -16)
+            titleLabel.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -16),
+            
+            separatorLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -0.5),
+            separatorLine.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
+            separatorLine.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            separatorLine.heightAnchor.constraint(equalToConstant: 0.5),
         ])
     }
     
-    func updateModel(title: String) {
+    func updateModel(title: String, image: UIImage?) {
         titleLabel.text = title
+        iconImageView.image = image
+        
+    }
+    
+    func removeLine() {
+        separatorLine.isHidden = true
     }
 }

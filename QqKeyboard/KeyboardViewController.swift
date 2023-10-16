@@ -118,9 +118,13 @@ final class KeyboardViewController: UIInputViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLayoutConstraint.activate([
+            view.heightAnchor.constraint(equalToConstant: keyboardHeight)
+        ])
         if textDocumentProxy.hasText {
             keyboardState = .low
         }
+        
         view.backgroundColor = UIColor(named: "key_bg_color")
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
@@ -133,10 +137,6 @@ final class KeyboardViewController: UIInputViewController {
         
         self.addKeyboardButtons()
         self.setColorScheme()
-        
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: keyboardHeight)
-        ])
     }
     
     override func viewWillLayoutSubviews() {
@@ -161,10 +161,10 @@ final class KeyboardViewController: UIInputViewController {
     private func addKeyboardButtons() {
         //My Custom Keys...
         allTextButtons.removeAll()
-        if keyboardState == .low || !shouldMakeUppercasedKeyboard().makeUpper {
+        if keyboardState == .low {
             let additionalRow = addRowsOnKeyboard(kbKeys: ["á","ǵ", "ú", "ń", "ı", "ó"], isAdditional: true)
             let firstRowView = addRowsOnKeyboard(kbKeys: ["q","w","e","r","t","y","u","i","o","p"])
-            let secondRowView = addRowsOnKeyboard(kbKeys: ["a","s","d","f","g","h","j","k","l"])
+            let secondRowView = addRowsOnKeyboard(kbKeys: ["a","s","d","f","g","h","j","k","l"], isMiddle: true)
             
             let thirdRowkeysView = addRowsOnKeyboard(kbKeys: ["z","x","c","v","b","n","m"])
             
@@ -174,7 +174,7 @@ final class KeyboardViewController: UIInputViewController {
         }else {
             let additionalRow = addRowsOnKeyboard(kbKeys: ["Á","Ǵ", "Ú", "Ń", "Í", "Ó"], isAdditional: true)
             let firstRowView = addRowsOnKeyboard(kbKeys: ["Q","W","E","R","T","Y","U","I","O","P"])
-            let secondRowView = addRowsOnKeyboard(kbKeys: ["A","S","D","F","G","H","J","K","L"])
+            let secondRowView = addRowsOnKeyboard(kbKeys: ["A","S","D","F","G","H","J","K","L"], isMiddle: true)
             
             let thirdRowkeysView = addRowsOnKeyboard(kbKeys: ["Z","X","C","V","B","N","M"])
             
@@ -187,7 +187,7 @@ final class KeyboardViewController: UIInputViewController {
     private func addCyrillKeyboardButtons() {
         //My Custom Keys...
         allTextButtons.removeAll()
-        if keyboardState == .low || !shouldMakeUppercasedKeyboard().makeUpper {
+        if keyboardState == .low {
             let additionalRow = addRowsOnKeyboard(kbKeys: ["ә","ў", "ү", "қ", "ң", "ғ", "ө","ъ","ҳ"], isAdditional: true)
             let firstRowView = addRowsOnKeyboard(kbKeys: ["й","ц","у","к","е","н","г","ш","щ","з", "х"])
             let secondRowView = addRowsOnKeyboard(kbKeys: ["ф","ы","в","а","п","р","о","л","д", "ж","э"])
@@ -235,7 +235,7 @@ final class KeyboardViewController: UIInputViewController {
         
     }
     
-    private func addRowsOnKeyboard(kbKeys: [String], spacing: CGFloat = 5, isAdditional: Bool = false) -> UIView {
+    private func addRowsOnKeyboard(kbKeys: [String], spacing: CGFloat = 5, isAdditional: Bool = false, isMiddle: Bool = false) -> UIView {
         
         let RowStackView = UIStackView.init()
         RowStackView.spacing = 0
@@ -256,12 +256,20 @@ final class KeyboardViewController: UIInputViewController {
             }
         }
         
+        
+        
         let keysView = UIView()
         keysView.backgroundColor = .clear
         keysView.addSubview(RowStackView)
-        keysView.addConstraintsWithFormatString(formate: "H:|[v0]|", views: RowStackView)
         keysView.addConstraintsWithFormatString(formate: "V:|[v0]|", views: RowStackView)
-        return keysView
+        if isMiddle {
+            keysView.addConstraintsWithFormatString(formate: "H:|-(16)-[v0]-(16)-|", views: RowStackView)
+            return keysView
+        }else {
+            keysView.addConstraintsWithFormatString(formate: "H:|[v0]|", views: RowStackView)
+            return keysView
+        }
+        
     }
     
     private func addMainStackView(arrangedSubviews: [UIView]) {
