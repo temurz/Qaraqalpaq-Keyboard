@@ -7,6 +7,30 @@
 
 import UIKit
 extension KeyboardViewController {
+    // Creates Buttons on Keyboard...
+    func createButtonWithTitle(title: String) -> UIButton {
+        let button = KeyboardButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.sizeToFit()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = themeColors.buttonBackgroundColor
+        button.setTitleColor(themeColors.buttonTextColor, for: .normal)
+        button.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
+        allTextButtons.append(button)
+        
+        let bgButton = createBackgroundButton(subView: button)
+        bgButton.setTitle(title, for: .normal)
+        bgButton.isUserInteractionEnabled = true
+        bgButton.backgroundColor = view.backgroundColor
+        bgButton.setTitleColor(.clear, for: .normal)
+        bgButton.addTarget(self, action: #selector(didTapButton(sender: )), for: .touchUpInside)
+        return bgButton
+    }
+    
+    
     func createBackgroundButton(subView: UIView) -> UIButton {
         let button = UIButton()
         subView.translatesAutoresizingMaskIntoConstraints = false

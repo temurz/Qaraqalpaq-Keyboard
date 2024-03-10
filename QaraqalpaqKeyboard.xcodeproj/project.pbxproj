@@ -21,6 +21,12 @@
 		B8A85D952985D5F4003D3181 /* QqKeyboard.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B8A85D8E2985D5F4003D3181 /* QqKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8A85D9A2985DBE6003D3181 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8A85D7F2985D458003D3181 /* Assets.xcassets */; };
 		B8CC96552B9D3C7700594266 /* KeyboardViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC96542B9D3C7700594266 /* KeyboardViewController+Helpers.swift */; };
+		B8CC96572B9D411B00594266 /* NumericKeys+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC96562B9D411B00594266 /* NumericKeys+.swift */; };
+		B8CC96592B9D41B000594266 /* Colors+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC96582B9D41B000594266 /* Colors+.swift */; };
+		B8CC965B2B9D426300594266 /* Letters+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC965A2B9D426300594266 /* Letters+.swift */; };
+		B8CC965D2B9D42B500594266 /* Rows+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC965C2B9D42B500594266 /* Rows+.swift */; };
+		B8CC965F2B9D434200594266 /* ServiceKeys+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC965E2B9D434200594266 /* ServiceKeys+.swift */; };
+		B8CC96612B9D440000594266 /* MainStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC96602B9D440000594266 /* MainStackView+.swift */; };
 		B8D9FEA02AD6B9AE0002BC57 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */; };
 		B8F1D2682AD6F55D00C2F175 /* InstructionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D2672AD6F55D00C2F175 /* InstructionsController.swift */; };
 		B8F1D26A2AD6F58000C2F175 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F1D2692AD6F58000C2F175 /* ContactsController.swift */; };
@@ -69,6 +75,12 @@
 		B8A85D9D2985DF00003D3181 /* QaraqalpaqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QaraqalpaqKeyboard.entitlements; sourceTree = "<group>"; };
 		B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QqKeyboard.entitlements; sourceTree = "<group>"; };
 		B8CC96542B9D3C7700594266 /* KeyboardViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardViewController+Helpers.swift"; sourceTree = "<group>"; };
+		B8CC96562B9D411B00594266 /* NumericKeys+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumericKeys+.swift"; sourceTree = "<group>"; };
+		B8CC96582B9D41B000594266 /* Colors+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+.swift"; sourceTree = "<group>"; };
+		B8CC965A2B9D426300594266 /* Letters+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Letters+.swift"; sourceTree = "<group>"; };
+		B8CC965C2B9D42B500594266 /* Rows+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rows+.swift"; sourceTree = "<group>"; };
+		B8CC965E2B9D434200594266 /* ServiceKeys+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServiceKeys+.swift"; sourceTree = "<group>"; };
+		B8CC96602B9D440000594266 /* MainStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainStackView+.swift"; sourceTree = "<group>"; };
 		B8D9FE9F2AD6B9AE0002BC57 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B8F1D2672AD6F55D00C2F175 /* InstructionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsController.swift; sourceTree = "<group>"; };
 		B8F1D2692AD6F58000C2F175 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
@@ -142,7 +154,7 @@
 		B8A85D8F2985D5F4003D3181 /* QqKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B8CC96532B9D3C6200594266 /* Helpers */,
+				B8CC96532B9D3C6200594266 /* Extensions */,
 				B8A85D9E2985DFA1003D3181 /* QqKeyboard.entitlements */,
 				B8A85D902985D5F4003D3181 /* KeyboardViewController.swift */,
 				B89539E0298C932700974D82 /* Extensions.swift */,
@@ -151,12 +163,18 @@
 			path = QqKeyboard;
 			sourceTree = "<group>";
 		};
-		B8CC96532B9D3C6200594266 /* Helpers */ = {
+		B8CC96532B9D3C6200594266 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				B8CC96542B9D3C7700594266 /* KeyboardViewController+Helpers.swift */,
+				B8CC96562B9D411B00594266 /* NumericKeys+.swift */,
+				B8CC96582B9D41B000594266 /* Colors+.swift */,
+				B8CC965A2B9D426300594266 /* Letters+.swift */,
+				B8CC965C2B9D42B500594266 /* Rows+.swift */,
+				B8CC965E2B9D434200594266 /* ServiceKeys+.swift */,
+				B8CC96602B9D440000594266 /* MainStackView+.swift */,
 			);
-			path = Helpers;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B8D9FEA12AD6E3DD0002BC57 /* Controllers */ = {
@@ -287,11 +305,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CC96592B9D41B000594266 /* Colors+.swift in Sources */,
 				B89539E6298C981300974D82 /* KeyboardButton.swift in Sources */,
 				B8795F0E2995482B00F9CF57 /* Themes+Colors.swift in Sources */,
+				B8CC965F2B9D434200594266 /* ServiceKeys+.swift in Sources */,
+				B8CC965D2B9D42B500594266 /* Rows+.swift in Sources */,
 				B8CC96552B9D3C7700594266 /* KeyboardViewController+Helpers.swift in Sources */,
+				B8CC96572B9D411B00594266 /* NumericKeys+.swift in Sources */,
 				B8A85D912985D5F4003D3181 /* KeyboardViewController.swift in Sources */,
+				B8CC96612B9D440000594266 /* MainStackView+.swift in Sources */,
 				B89539E2298C975000974D82 /* Extensions.swift in Sources */,
+				B8CC965B2B9D426300594266 /* Letters+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
