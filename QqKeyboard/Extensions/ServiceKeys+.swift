@@ -9,7 +9,7 @@ import UIKit
 extension KeyboardViewController {
     func accessoryButtons(title: String?, img: UIImage?, tag: Int) -> KeyboardButton {
         let screenWidth = view.window?.windowScene?.screen.bounds.width ?? 390
-        let buttonWidth = (screenWidth - 40) / 10
+        let buttonWidth = areCyrillLetters ? (screenWidth - 44) / 11 : (screenWidth - 40) / 10
         
         let button = KeyboardButton.init(type: .system)
         button.setTitleColor(themeColors.buttonTextColor, for: .normal)
@@ -37,7 +37,7 @@ extension KeyboardViewController {
             singleTapGesture.numberOfTapsRequired = 1
             button.addGestureRecognizer(singleTapGesture)
             
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             return button
             
         case 2:
@@ -48,12 +48,12 @@ extension KeyboardViewController {
             longPressRecognizer.cancelsTouchesInView = false
             button.addGestureRecognizer(longPressRecognizer)
             button.addTarget(self, action: #selector(handleBackDeleteSingleTap), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             return button
         case 3:
             //Switch to and From Letters & Numeric Keys
             button.addTarget(self, action: #selector(handleSwitchingNumericsAndLetters(sender:)), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: buttonWidth + 15).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth * 1.3).isActive = true
             
             return button
         case 4:
@@ -80,8 +80,9 @@ extension KeyboardViewController {
             return button
         case 8:
             //additional symbols
+            
             button.addTarget(self, action: #selector(handleAdditionalSymbolicKey), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth*1.3).isActive = true
             return button
         case 9:
             button.addTarget(self, action: #selector(handleDotButton), for: .touchUpInside)
@@ -89,7 +90,7 @@ extension KeyboardViewController {
             return button
         case 10:
             button.addTarget(self, action: #selector(handleCommaButton), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             return button
         default:
             return button
@@ -97,19 +98,19 @@ extension KeyboardViewController {
     }
     
     func serviceKeys(midRow: UIView) -> (UIStackView, UIStackView) {
-        //        if areLettersShowing {
-        switch keyboardState {
-        case .low:
-            self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial1"), tag: 1)
-        case .up:
-            self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial"), tag: 1)
-        case .alwaysUp:
-            self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial2"), tag: 1)
+        if areLettersShowing {
+            switch keyboardState {
+            case .low:
+                self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial1"), tag: 1)
+            case .up:
+                self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial"), tag: 1)
+            case .alwaysUp:
+                self.capButton = accessoryButtons(title: nil, img: #imageLiteral(resourceName: "captial2"), tag: 1)
+            }
+            
+        }else {
+            self.capButton = accessoryButtons(title: "#+=", img: nil, tag: 8)
         }
-        
-        //        }else {
-        //            self.capButton = accessoryButtons(title: "_\\", img: nil, tag: 8)
-        //        }
         self.deleteButton = accessoryButtons(title: nil, img: UIImage(named: "backspace"), tag: 2)
         
         capButton.translatesAutoresizingMaskIntoConstraints = false
@@ -164,7 +165,7 @@ extension KeyboardViewController {
         //
         //            return (thirdRowSV,fourthRowSV)
         //        }else {
-        let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, dotBgButton, spaceBgButton, latinCyrBgButton, returnBgButton])
+        let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, latinCyrBgButton, dotBgButton, spaceBgButton, commaBgButton, returnBgButton])
         fourthRowSV.distribution = .fillProportionally
         fourthRowSV.spacing = 0
         
@@ -234,13 +235,13 @@ extension KeyboardViewController {
     }
     
     @objc func handleAdditionalSymbolicKey() {
-        //        additionalSymbols = !additionalSymbols
-        //        displayNumericKeys(firstPage: additionalSymbols)
-        //        if additionalSymbols {
-        //            self.capButton.setTitle("_\\", for: .normal)
-        //        }else {
-        //            self.capButton.setTitle("-/", for: .normal)
-        //        }
+        additionalSymbols = !additionalSymbols
+        displayNumericKeys(firstPage: additionalSymbols)
+        if additionalSymbols {
+            self.capButton.setTitle("#+=", for: .normal)
+        }else {
+            self.capButton.setTitle("123", for: .normal)
+        }
     }
     
     @objc func handleDotButton() {

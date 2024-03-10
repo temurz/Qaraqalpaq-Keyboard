@@ -15,16 +15,17 @@ extension KeyboardViewController {
             view.removeFromSuperview()
         }
         
-        let additional = ["[","]","{","}","\\","%","^","*","+","="]
-        let nums = ["1","2","3","4","5","6","7","8","9","0"]
-//        let splChars1 = firstPage ? ["-","/",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
-        let splChars1 = firstPage ? ["-","_",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
-        let splChars2 = [".",",","?","!","#", "/"]
+        let additional = ["[","]","<",">","\\","%","^","*","+","="]
+        let nums = /*firstPage ?*/ ["1","2","3","4","5","6","7","8","9","0"] 
+//        : ["[","]","<",">","\\","%","^","*","+","="]
+        let splChars1 = firstPage ? ["-","/",":",";","(",")","$","&","@","\""]
+        : ["_","\\","|","~","<",">","€","£","¥","•"]
+        let splChars2 = [".",",","?","!","'"]
         
         let additionalRow = self.addRowsOnKeyboard(kbKeys: additional,buttonWidth: buttonWidth)
         let numsRow = self.addRowsOnKeyboard(kbKeys: nums,buttonWidth: buttonWidth)
         let splChars1Row = self.addRowsOnKeyboard(kbKeys: splChars1,buttonWidth: buttonWidth)
-        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2,buttonWidth: buttonWidth)
+        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2, spacing: buttonWidth * 0.1, buttonWidth: buttonWidth)
         
         let (thirdRowSV,fourthRowSV) = serviceKeys(midRow: splChars2Row)
         
@@ -33,6 +34,7 @@ extension KeyboardViewController {
         mainStackView.addArrangedSubview(splChars1Row)
         mainStackView.addArrangedSubview(thirdRowSV)
         mainStackView.addArrangedSubview(fourthRowSV)
-        
+        setColorScheme()
+//        addMainStackView(arrangedSubviews: [additionalRow, numsRow,splChars1Row,thirdRowSV,fourthRowSV])
     }
 }

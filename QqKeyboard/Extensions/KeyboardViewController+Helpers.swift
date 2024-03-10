@@ -29,7 +29,6 @@ extension KeyboardViewController {
         let bgButton = createBackgroundButton(subView: button)
         bgButton.setTitle(title, for: .normal)
         bgButton.isUserInteractionEnabled = true
-        bgButton.backgroundColor = view.backgroundColor
         bgButton.setTitleColor(.clear, for: .normal)
         bgButton.backgroundColor = view.backgroundColor
         bgButton.isUserInteractionEnabled = true
@@ -40,6 +39,7 @@ extension KeyboardViewController {
     
     func createBackgroundButton(subView: UIView) -> UIButton {
         let button = UIButton()
+        button.backgroundColor = view.backgroundColor
         subView.translatesAutoresizingMaskIntoConstraints = false
         button.addSubview(subView)
         subView.fullConstraint(top: 4, bottom: -4, leading: 2, trailing: -2)

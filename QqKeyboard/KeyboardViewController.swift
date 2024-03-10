@@ -66,6 +66,7 @@ final class KeyboardViewController: UIInputViewController {
         
     }
     
+    var additionalSymbols = false 
     override func updateViewConstraints() {
         super.updateViewConstraints()
         // Add custom view sizing constraints here
