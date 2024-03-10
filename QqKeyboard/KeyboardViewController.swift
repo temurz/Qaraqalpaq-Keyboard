@@ -27,7 +27,7 @@ final class KeyboardViewController: UIInputViewController {
     var dotButton: KeyboardButton!
     var commaButton: KeyboardButton!
     
-    var keyboardHeight: CGFloat = 215
+    var keyboardHeight: CGFloat = 255
     var themeColors: KBColors! = KBColors(colorScheme: .dark)
     
     var backspaceTimer: Timer?
@@ -80,7 +80,7 @@ final class KeyboardViewController: UIInputViewController {
             keyboardState = .low
         }
         
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor(named: "key_bg_color")
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
         

@@ -31,6 +31,7 @@ extension KeyboardViewController {
         bgButton.isUserInteractionEnabled = true
         bgButton.backgroundColor = view.backgroundColor
         bgButton.setTitleColor(.clear, for: .normal)
+        bgButton.backgroundColor = view.backgroundColor
         bgButton.isUserInteractionEnabled = true
         bgButton.addTarget(self, action: #selector(didTapButton(sender: )), for: .touchUpInside)
         return bgButton

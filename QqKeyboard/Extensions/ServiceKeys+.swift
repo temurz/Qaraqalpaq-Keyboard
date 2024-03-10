@@ -8,6 +8,8 @@
 import UIKit
 extension KeyboardViewController {
     func accessoryButtons(title: String?, img: UIImage?, tag: Int) -> KeyboardButton {
+        let screenWidth = view.window?.windowScene?.screen.bounds.width ?? 390
+        let buttonWidth = (screenWidth - 40) / 10
         
         let button = KeyboardButton.init(type: .system)
         button.setTitleColor(themeColors.buttonTextColor, for: .normal)
@@ -51,20 +53,20 @@ extension KeyboardViewController {
         case 3:
             //Switch to and From Letters & Numeric Keys
             button.addTarget(self, action: #selector(handleSwitchingNumericsAndLetters(sender:)), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 45).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth + 15).isActive = true
             
             return button
         case 4:
             //Next Keyboard Button... Globe Button Usually...
             button.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             
             return button
         case 5:
             //Handle Latin or Cyrill Karakalpak alphabet
             
             button.addTarget(self, action: #selector(handleLatinCyrillButton), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             return button
         case 6:
             //White Space Button...
@@ -74,7 +76,7 @@ extension KeyboardViewController {
             return button
         case 7:
             button.addTarget(self, action: #selector(handleReturnKey(sender:)), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 75).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth * 2).isActive = true
             return button
         case 8:
             //additional symbols
@@ -83,7 +85,7 @@ extension KeyboardViewController {
             return button
         case 9:
             button.addTarget(self, action: #selector(handleDotButton), for: .touchUpInside)
-            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
             return button
         case 10:
             button.addTarget(self, action: #selector(handleCommaButton), for: .touchUpInside)

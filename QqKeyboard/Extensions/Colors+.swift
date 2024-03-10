@@ -14,7 +14,7 @@ extension KeyboardViewController {
             themeColors = KBColors(colorScheme: .light)
         }
         
-        self.capButton.defaultBackgroundColor = themeColors.buttonBackgroundColor
+        self.capButton.defaultBackgroundColor = themeColors.serviceButtonBackgroundColor
         self.capButton.tintColor = themeColors.buttonTintColor
         self.deleteButton.defaultBackgroundColor = themeColors.serviceButtonBackgroundColor
         self.deleteButton.tintColor = themeColors.buttonTintColor
@@ -29,7 +29,7 @@ extension KeyboardViewController {
         self.commaButton.setTitleColor(themeColors.buttonTextColor, for: .normal)
         self.spaceButton.defaultBackgroundColor = themeColors.buttonBackgroundColor
         
-        self.capButton.highlightBackgroundColor = themeColors.buttonHighlightColor
+        self.capButton.highlightBackgroundColor = themeColors.buttonBackgroundColor
         self.deleteButton.highlightBackgroundColor = themeColors.buttonBackgroundColor
         self.returnButton.highlightBackgroundColor = themeColors.buttonBackgroundColor
         self.numericButton.highlightBackgroundColor = themeColors.buttonBackgroundColor
