@@ -8,14 +8,19 @@
 import UIKit
 extension KeyboardViewController {
     // Creates Buttons on Keyboard...
-    func createButtonWithTitle(title: String) -> UIButton {
+    func createButtonWithTitle(title: String, buttonWidth: CGFloat) -> UIButton {
         let button = KeyboardButton(type: .system)
         button.setTitle(title, for: .normal)
         button.sizeToFit()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        if title == title.uppercased() {
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        }else {
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 26)
+        }
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         button.backgroundColor = themeColors.buttonBackgroundColor
         button.setTitleColor(themeColors.buttonTextColor, for: .normal)
         button.addTarget(self, action: #selector(didTapButton(sender:)), for: .touchUpInside)
@@ -26,6 +31,7 @@ extension KeyboardViewController {
         bgButton.isUserInteractionEnabled = true
         bgButton.backgroundColor = view.backgroundColor
         bgButton.setTitleColor(.clear, for: .normal)
+        bgButton.isUserInteractionEnabled = true
         bgButton.addTarget(self, action: #selector(didTapButton(sender: )), for: .touchUpInside)
         return bgButton
     }

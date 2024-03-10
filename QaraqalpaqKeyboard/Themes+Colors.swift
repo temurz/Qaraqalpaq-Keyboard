@@ -32,7 +32,8 @@ struct KBColors {
         case .dark:
             buttonTextColor = .white
             buttonTintColor = .white
-            buttonBackgroundColor = UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
+            buttonBackgroundColor = UIColor.hexStringToUIColor(hex: "#6F6F6F")
+//            UIColor(red: 84/255, green: 84/255, blue: 84/255, alpha: 1.0)
             buttonHighlightColor = UIColor(white: 104/255, alpha: 1.0)
             serviceButtonBackgroundColor = UIColor(red: 70/255, green: 70/255, blue: 70/255, alpha: 1.0)
         }

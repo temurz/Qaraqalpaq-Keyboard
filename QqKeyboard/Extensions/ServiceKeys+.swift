@@ -162,7 +162,7 @@ extension KeyboardViewController {
         //
         //            return (thirdRowSV,fourthRowSV)
         //        }else {
-        let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, nextBgButton, spaceBgButton, latinCyrBgButton, returnBgButton])
+        let fourthRowSV = UIStackView(arrangedSubviews: [numbericBgButton, dotBgButton, spaceBgButton, latinCyrBgButton, returnBgButton])
         fourthRowSV.distribution = .fillProportionally
         fourthRowSV.spacing = 0
         
@@ -268,7 +268,7 @@ extension KeyboardViewController {
     
     @objc private func backspaceTimerFired() {
         let proxy = textDocumentProxy as UITextDocumentProxy
-        if backspaceCounter < 25 { // Delete letters for first 5 presses
+        if backspaceCounter < 15 { // Delete letters for first 5 presses
             proxy.deleteBackward()
         } else { // Delete entire word after 5 presses
             let wordRange = proxy.documentContextBeforeInput?.rangeOfCharacter(from: .whitespacesAndNewlines, options: .backwards)

@@ -41,7 +41,7 @@ final class KeyboardViewController: UIInputViewController {
         }
     }
     
-    var areCyrillLetters = false {
+    var areCyrillLetters = true {
         didSet {
             areLettersShowing = true
         }
@@ -90,7 +90,7 @@ final class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
         
-        self.addLatinKeyboardButtons()
+        self.addCyrillKeyboardButtons()
         self.setColorScheme()
     }
     

@@ -8,6 +8,8 @@
 import UIKit
 extension KeyboardViewController {
     func displayNumericKeys(firstPage: Bool = true) {
+        let screenWidth = view.window?.windowScene?.screen.bounds.width ?? 390
+        let buttonWidth = (screenWidth - 40) / 10
         
         for view in mainStackView.arrangedSubviews {
             view.removeFromSuperview()
@@ -19,10 +21,10 @@ extension KeyboardViewController {
         let splChars1 = firstPage ? ["-","_",":",";","(",")","$","&","@","\""] : ["_","\\","|","~","<",">","€","£","¥","•"]
         let splChars2 = [".",",","?","!","#", "/"]
         
-        let additionalRow = self.addRowsOnKeyboard(kbKeys: additional)
-        let numsRow = self.addRowsOnKeyboard(kbKeys: nums)
-        let splChars1Row = self.addRowsOnKeyboard(kbKeys: splChars1)
-        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2)
+        let additionalRow = self.addRowsOnKeyboard(kbKeys: additional,buttonWidth: buttonWidth)
+        let numsRow = self.addRowsOnKeyboard(kbKeys: nums,buttonWidth: buttonWidth)
+        let splChars1Row = self.addRowsOnKeyboard(kbKeys: splChars1,buttonWidth: buttonWidth)
+        let splChars2Row = self.addRowsOnKeyboard(kbKeys: splChars2,buttonWidth: buttonWidth)
         
         let (thirdRowSV,fourthRowSV) = serviceKeys(midRow: splChars2Row)
         
